@@ -31,7 +31,7 @@ USAGE
     ./207demography code [...]
     
 DESCRIPTION
-code    country code
+    code    country code
 ```
 
 
