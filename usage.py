@@ -15,9 +15,6 @@ def help():
     """
 
     print("USAGE\n"
-          "\t./206neutrinos n a h sd\n\n"
-          "DESCRIPTION\n"
-          "\tn\t\tnumber of values\n"
-          "\ta\t\tarithmetic mean\n"
-          "\th\t\tharmonic mean\n"
-          "\tsd\t\tstandard deviation".expandtabs(4))
+        "\t./207demography code [...]\n\n"    
+        "DESCRIPTION\n"
+        "\tcode\tcountry code".expandtabs(4))
