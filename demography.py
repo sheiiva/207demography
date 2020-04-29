@@ -11,6 +11,8 @@
 import csv
 import sys
 
+COUNTRYNAME = 0
+
 class Demography():
 
     """
@@ -20,43 +22,44 @@ class Demography():
     def __init__(self):
         self._country = sys.argv[1:]
         self._data = []
+        self._keys = []
 
     def getData(self):
+
         """
         Get data from CSV file
         """
 
-        with open("./207demography_data.csv", 'r') as csv_file:
+        with open("./deps/207demography_data.csv", 'r') as csv_file:
             csv_reader = csv.reader(csv_file, delimiter=';')
             for row in csv_reader:
                 self._data.append(row)
 
     def printCountry(self):
+
         """
         Print country's name
         """
-        x = 0
-        i = 0
-        
-        while x < len(self._data):
-            if (i == len(self._country)):
-                break
-            if (i < 1):
-                if (self._data[x][1] == self._country[i]):
-                    print("Country = {}".format(self._data[x][0]), end="")
-                    i += 1
-                    x = 0
-                else:
-                    x += 1
-            elif (i >= 1):
-                if (self._data[x][1] == self._country[i]):
-                    print(", {}".format(self._data[x][0]), end="")
-                    i += 1
-                    x = 0
-                else:
-                    x += 1
+
+        print("Country: ", end="")
+        for key in self._keys:
+            print(self._data[key][COUNTRYNAME], end="")
+            if key != self._keys[len(self._keys) - 1]:
+                print(", ", end="")
         print()
-        
+
+    def getKeys(self):
+
+        """
+        Find countries' keys in data and stock it.
+        """
+
+        for country in self._country:
+            for x in range(len(self._data)):
+                if (self._data[x][1] == country):
+                    self._keys.append(x)
+        print(self._keys)
+
     def run(self):
 
         """
@@ -64,5 +67,6 @@ class Demography():
         """
 
         self.getData()
+        self.getKeys()
         self.printCountry()
         return 0

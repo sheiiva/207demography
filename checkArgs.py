@@ -17,23 +17,9 @@ class ArgumentManager():
         Check for arguments validity.
         """
 
-        def isNum(value):
-
-            """
-            Return True if value is a digit.
-            """
-
-            try:
-                int(value)
-            except:
-                False
-            else:
-                return True
         if (len(argv) < 2):
             print("Wrong number of arguments. Please run with -h.")
             return 84
-            
-        return isNum(0) # to delete
 
     def needHelp(self, argv):
 
