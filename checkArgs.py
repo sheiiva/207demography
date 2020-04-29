@@ -29,6 +29,9 @@ class ArgumentManager():
                 False
             else:
                 return True
+        if (len(argv) < 2):
+            print("Wrong number of arguments. Please run with -h.")
+            return 84
             
         return isNum(0) # to delete
 
