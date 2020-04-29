@@ -27,7 +27,8 @@ def main():
     elif argsManager.checkArgs(argv) == 84:
         exit (84)
     else:
-        Demography()
+        demography = Demography()
+        demography.run();
 
 
 if __name__ == "__main__":
