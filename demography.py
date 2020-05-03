@@ -97,7 +97,7 @@ class Demography():
         for key in self._keys:
             for population in range(2, len(self._data[key]), 1):
                 self._population.append(int(self._data[key][population]))
-                
+
         for i in range(len(self._population)):
             self._sumPopulation += self._population[i]
 
@@ -109,9 +109,10 @@ class Demography():
         Get years
         """
 
-        for i in range (2, len(self._data[0]), 1):
-            self._years.append(int(self._data[0][i]))
-            
+        for key in range(len(self._keys)):
+            for i in range (2, len(self._data[0]), 1):
+                self._years.append(int(self._data[0][i]))
+
         for i in range(len(self._years)):
             self._sumYears += self._years[i]
 
@@ -167,8 +168,7 @@ class Demography():
             mean_square += ((self._years[i] - b) / a - self._population[i]) ** 2 / len(self._population)
         print("   Root-mean-square deviation: {:.2f}".format(math.sqrt(mean_square)/1000000))
         print("   Population in 2050: {:.2f}".format((2050 - b) / a/1000000))
-        print()
-            
+
     def run(self):
 
         """
