@@ -49,9 +49,9 @@ class Demography():
         """
 
         a = (len(self._population) * self._xy - self._sumYears * self._sumPopulation) / (len(self._population) * self._powPopulation - self._sumPopulation ** 2)
-        
+                
         b = (self._sumYears * self._powPopulation - self._sumPopulation * self._xy) / (len(self._population) * self._powPopulation - self._sumPopulation ** 2)
-        
+               
         return (a, b)
 
     def getData(self):
@@ -155,18 +155,18 @@ class Demography():
 
         a, b = self.fit2()
         mean_square = 0
-        
+
         if (b >= 0):
-            print("   X = {:.2f} Y + ".format(a/1000000), end="")
-            print("{:.2f}".format(b/1000000))
+            print("   X = {:.2f} Y + ".format(a*1000000), end="")
+            print("{:.2f}".format(b))
         else:
-            print("   X = {:.2f} Y - ".format(a/1000000), end="")
-            print("{:.2f}".format(abs(b/1000000)))
+            print("   X = {:.2f} Y - ".format(a*1000000), end="")
+            print("{:.2f}".format(abs(b)))
 
         for i in range(len(self._population)):
-            mean_square += ((self._years[i] * a + b) - self._population[i]) ** 2 / len(self._population)
+            mean_square += ((self._years[i] - b) / a - self._population[i]) ** 2 / len(self._population)
         print("   Root-mean-square deviation: {:.2f}".format(math.sqrt(mean_square)/1000000))
-        print("   Population in 2050: {:.2f}".format((2050 * a + b)/1000000))
+        print("   Population in 2050: {:.2f}".format((2050 - b) / a/1000000))
         print()
             
     def run(self):
