@@ -84,10 +84,15 @@ class Demography():
         Find countries' keys in data and stock it.
         """
 
+        count = 0
+        
         for country in self._country:
             for x in range(len(self._data)):
                 if (self._data[x][1] == country):
                     self._keys.append(x)
+                    count += 1
+        if count != len(self._country):
+            exit (84)
         
     def getPopulation(self):
         """
