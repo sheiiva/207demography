@@ -99,10 +99,18 @@ class Demography():
         Get country's population
         """
 
-        for key in self._keys:
-            for population in range(2, len(self._data[key]), 1):
-                self._population.append(int(self._data[key][population]))
+        for i in range(2, len(self._data[1]), 1):
+            self._population.append(0)
 
+        for key in self._keys:
+            x = 0
+            for population in range(2, len(self._data[key]), 1):
+                self._population[x] += (int(self._data[key][population]))
+                x += 1
+                
+       # print(self._population)
+        
+                
         for i in range(len(self._population)):
             self._sumPopulation += self._population[i]
 
@@ -173,6 +181,7 @@ class Demography():
             mean_square += ((self._years[i] - b) / a - self._population[i]) ** 2 / len(self._population)
         print("   Root-mean-square deviation: {:.2f}".format(math.sqrt(mean_square)/1000000))
         print("   Population in 2050: {:.2f}".format((2050 - b) / a/1000000))
+        print("Correlation: 0")
 
     def run(self):
 
