@@ -108,23 +108,19 @@ class Demography():
                 self._population[x] += (int(self._data[key][population]))
                 x += 1
                 
-       # print(self._population)
-        
-                
         for i in range(len(self._population)):
             self._sumPopulation += self._population[i]
 
         for i in range(len(self._population)):
             self._powPopulation += (self._population[i] ** 2)
-
+        
     def getYears(self):
         """
         Get years
         """
 
-        for key in range(len(self._keys)):
-            for i in range (2, len(self._data[0]), 1):
-                self._years.append(int(self._data[0][i]))
+        for i in range (2, len(self._data[0]), 1):
+            self._years.append(int(self._data[0][i]))
 
         for i in range(len(self._years)):
             self._sumYears += self._years[i]
@@ -140,7 +136,6 @@ class Demography():
         for i in range(len(self._population)):
             self._xy += self._population[i] * self._years[i]
             
-
     def printFit1(self):
         """
         Print result
@@ -148,7 +143,10 @@ class Demography():
 
         a, b = self.fit1()
         mean_square = 0
-        
+        #print(self._sumPopulation)
+        #print(self._sumYears)
+        #print(self._powYears)
+        #print(self._xy)
         if (b >= 0):
             print("   Y = {:.2f} X + ".format(a/1000000), end="")
             print("{:.2f}".format(b/1000000))
