@@ -164,6 +164,7 @@ class Demography():
 
         a, b = self.fit2()
         mean_square = 0
+        correlation = 0
                 
         if (b >= 0):
             print("   X = {:.2f} Y + ".format(a*1000000), end="")
@@ -174,9 +175,12 @@ class Demography():
 
         for i in range(len(self._population)):
             mean_square += ((self._years[i] - b) / a - self._population[i]) ** 2 / len(self._population)
+        correlation = (len(self._population) * self._xy) - (self._sumYears * self._sumPopulation)
+        correlation /= math.sqrt((len(self._years) * self._powYears - self._sumYears ** 2) * (len(self._population) * self._powPopulation - self._sumPopulation ** 2))
+        
         print("   Root-mean-square deviation: {:.2f}".format(math.sqrt(mean_square)/1000000))
         print("   Population in 2050: {:.2f}".format((2050 - b) / a/1000000))
-        print("Correlation: 0")
+        print("Correlation: {:.4f}".format(correlation))
 
     def run(self):
 
