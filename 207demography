@@ -11,6 +11,7 @@
 #                                          #
 ############################################
 
+
 from sys import argv
 
 from usage import help
@@ -27,8 +28,7 @@ def main():
     elif argsManager.checkArgs(argv) == 84:
         exit (84)
     else:
-        demography = Demography()
-        demography.run();
+        Demography().run()
 
 
 if __name__ == "__main__":

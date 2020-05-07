@@ -11,7 +11,7 @@
 
 class ArgumentManager():
 
-    def checkArgs(self, argv):
+    def checkArgs(self, argv) -> int:
 
         """
         Check for arguments validity.
@@ -20,8 +20,9 @@ class ArgumentManager():
         if (len(argv) < 2):
             print("Wrong number of arguments. Please run with -h.")
             return 84
+        return 0
 
-    def needHelp(self, argv):
+    def needHelp(self, argv) -> bool:
 
         """
         Check if the user is asking for help.

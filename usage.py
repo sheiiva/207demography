@@ -8,13 +8,14 @@
 #                                          #
 ############################################
 
-def help():
+
+def help() -> None:
 
     """
     Show usage of the program.
     """
 
     print("USAGE\n"
-        "\t./207demography code [...]\n\n"    
+        "\t./207demography code [...]\n\n"
         "DESCRIPTION\n"
         "\tcode\tcountry code".expandtabs(4))
