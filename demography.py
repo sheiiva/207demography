@@ -31,6 +31,7 @@ class Demography():
         self._powPopulation = 0
         self._powYears = 0
         self._xy = 0
+        self._y = 0
 
     def fit1(self):
         """
@@ -143,10 +144,7 @@ class Demography():
 
         a, b = self.fit1()
         mean_square = 0
-        #print(self._sumPopulation)
-        #print(self._sumYears)
-        #print(self._powYears)
-        #print(self._xy)
+       
         if (b >= 0):
             print("   Y = {:.2f} X + ".format(a/1000000), end="")
             print("{:.2f}".format(b/1000000))
@@ -158,8 +156,7 @@ class Demography():
             mean_square += ((self._years[i] * a + b) - self._population[i]) ** 2 / len(self._population)
         print("   Root-mean-square deviation: {:.2f}".format(math.sqrt(mean_square)/1000000))
         print("   Population in 2050: {:.2f}".format((2050 * a + b)/1000000))
-        print()
-
+        
     def printFit2(self):
         """
         Print result
@@ -167,7 +164,7 @@ class Demography():
 
         a, b = self.fit2()
         mean_square = 0
-
+                
         if (b >= 0):
             print("   X = {:.2f} Y + ".format(a*1000000), end="")
             print("{:.2f}".format(b))
